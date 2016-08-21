@@ -1,0 +1,12 @@
+The current system uses a Logistic regression model. We are experimenting with a random forest model.
+
+A random forest is an example of what we call an ensemble model. Ensemble models are models which combine two or more predictive models (decision trees in our case)
+
+Decision tree, just like Logistic regression is an algorithm to create a predictive model. It gets its name from the tree structure wherein each node represents a decision which is dependent on a feature of the dataset.
+
+So, we try to ensemble / combine around 400 decision trees to our random forest.
+This explains the forest bit, but where is the randomness coming from?
+
+All the trees in the forest are trained on the same parameters but with different training sets. These different training sets are generated from the original training using a with replacement random selection. Apart from this, at each node of a trained tree, not all the variables are used to find the best split, but a random subset of them (a new subset is generated for each subset)
+
+These measure help avoid the problem of overfitting the dataset.

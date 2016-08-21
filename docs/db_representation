@@ -1,0 +1,20 @@
+Prints Representation
+
+WHY
+
+So the current database representation which is used by the logistic regression model is based on fact that all prints which are members of a group are very similar to each other (value wise). This is in contrast to how classes are in normal learning systems (A learning system is one wherein you are trying to teach a system to do something (prediction of os in our case)). Usually we'd have a target variable (operating system in our case) and have one group for some operating system (or a set of operating  systems) and all prints corresponding to the operating system would go into the group. And this is exactly what we have attempted with the new representation.
+
+Now, to achieve this, one simple solution could have been to just have one group for each operating system (each version, so one per linux kernel). Given the low number of prints this would have resulted in a very high number of groups with very less number of prints in each group which would have made prediction more difficult. That is why we tried to keep similar operating systems in the same group.
+
+We were able to do this for Windows, IBM, Macintosh, FreeBSD type systems. For Linux, we decided to stick with the existing representation (with small changes) due to complexity in the way the groups were made.
+
+
+HOW
+
+Steps to reach from nmap.groups file to db_att1_one_per_class.groups
+
+1) remove repetitions, they have been marked using group number in group_repetitions. (repetitions are the ones which have the exact same group names.
+
+2) evaluate problem test cases, they and their chosen solutions have been documented in the problem directory
+
+3) Merge / Separate groups as written the in problem files.

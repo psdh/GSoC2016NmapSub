@@ -1,0 +1,111 @@
+$IPV6 = [
+    S1
+    S2
+    S3
+    S4
+    S5
+    S6
+    IE1
+    IE2
+# Temporarily disabled because the probe was broken before r26930;
+# it was missing a target address and so didn't get a response.
+#    NI
+    NS
+    U1
+    TECN
+    T2
+    T3
+    T4
+    T5
+    T6
+    T7
+]
+
+$TCP = [
+    S1
+    S2
+    S3
+    S4
+    S5
+    S6
+    TECN
+    T2
+    T3
+    T4
+    T5
+    T6
+    T7
+]
+
+$ICMPV6 = [
+    IE1
+    IE2
+# Temporarily disabled; see above.
+#    NI
+    NS
+]
+
+$IPV6 * [
+    PLEN
+    TC
+    HLIM
+]
+
+TCP_ISR
+
+$TCP * [
+    TCP_WINDOW
+    TCP_FLAG_F
+    TCP_FLAG_S
+    TCP_FLAG_R
+    TCP_FLAG_P
+    TCP_FLAG_A
+    TCP_FLAG_U
+    TCP_FLAG_E
+    TCP_FLAG_C
+    TCP_FLAG_RES8
+    TCP_FLAG_RES9
+    TCP_FLAG_RES10
+    TCP_FLAG_RES11
+    TCP_OPT_0
+    TCP_OPT_1
+    TCP_OPT_2
+    TCP_OPT_3
+    TCP_OPT_4
+    TCP_OPT_5
+    TCP_OPT_6
+    TCP_OPT_7
+    TCP_OPT_8
+    TCP_OPT_9
+    TCP_OPT_10
+    TCP_OPT_11
+    TCP_OPT_12
+    TCP_OPT_13
+    TCP_OPT_14
+    TCP_OPT_15
+    TCP_OPTLEN_0
+    TCP_OPTLEN_1
+    TCP_OPTLEN_2
+    TCP_OPTLEN_3
+    TCP_OPTLEN_4
+    TCP_OPTLEN_5
+    TCP_OPTLEN_6
+    TCP_OPTLEN_7
+    TCP_OPTLEN_8
+    TCP_OPTLEN_9
+    TCP_OPTLEN_10
+    TCP_OPTLEN_11
+    TCP_OPTLEN_12
+    TCP_OPTLEN_13
+    TCP_OPTLEN_14
+    TCP_OPTLEN_15
+    TCP_MSS
+    TCP_SACKOK
+    TCP_WSCALE
+    TCP_CORR_WINDOW_MSS
+]
+
+$ICMPV6 * [
+    ICMPV6_TYPE
+    ICMPV6_CODE
+]

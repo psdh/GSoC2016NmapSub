@@ -1,0 +1,14 @@
+# Multi Stage Random Forest
+
+This classifier aims on using multiple layers (with classifiers at each level) for OS classification instead of previous single-stage attempts.
+
+## Basic Working
+
+The model uses 2 layers of classifiers as of now. The first layers is responsible for understanding and differentiating between broader sets of operating systems, namely, Linux, BSDs, Windows, Macintosh and Others.
+
+Once this classification is successful, the print is sent to the second layer for a more specific classification. The second layer has a different classifier for each of the OS classes (Linux, BSDs, Windows, Macintosh and Others). The classifications so produced by the second layers is the output for the given print.
+
+Each of models that we spoke about are random forest models with different training prints to change what they understand.
+
+## Future Scope
+We could try to segregate the probes that we send depending upon the layers of the classifier. So, we could try to shoot layer 1 probes initially, perform that classification and send layer 2 probes later. This could help us reduce the number of probes that we send, for example, we may choose to not send some probes if we know that the given print seems to belong to say the Linux set. It'll also help us improve prediction speed.

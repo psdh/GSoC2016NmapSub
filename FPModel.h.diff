@@ -1,0 +1,9 @@
+-extern struct model FPModel;
+-extern double FPscale[][2];
+-extern double FPmean[][695];
+-extern double FPvariance[][695];
+-extern FingerMatch FPmatches[];
++#include <ml.h>
++
++extern cv::Ptr<cv::ml::RTrees> S1Model;
++extern void loadStage2Model(cv::Ptr<cv::ml::RTrees> model, int s1answer);

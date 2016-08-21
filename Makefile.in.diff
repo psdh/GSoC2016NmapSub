@@ -1,0 +1,32 @@
+-export LIBLINEARDIR = @LIBLINEARDIR@
++export OPENCVDIR = @OPENCVDIR@
+-export LIBLINEAR_LIBS = @LIBLINEAR_LIBS@
++export OPENCV_LIBS = @OPENCV_LIBS@
+-CFLAGS = @CFLAGS@ $(DBGFLAGS) $(CCOPT)
++export CFLAGS = $(CXXFLAGS)
++# CFLAGS = $(DEFS) $(INCLS)
+-LIBS =  @LIBNSOCK_LIBS@ @LIBNBASE_LIBS@ @LIBPCRE_LIBS@ @LIBPCAP_LIBS@ $(OPENSSL_LIBS) libnetutil/libnetutil.a @LIBDNET_LIBS@ @LIBLUA_LIBS@ @LIBLINEAR_LIBS@ @LIBS@
++LIBS =  @LIBNSOCK_LIBS@ @LIBNBASE_LIBS@ @LIBPCRE_LIBS@ @LIBPCAP_LIBS@ $(OPENSSL_LIBS) libnetutil/libnetutil.a @LIBDNET_LIBS@ @LIBLUA_LIBS@ @OPENCV_LIBS@ @LIBS@
+-$(TARGET): build-netutil @LIBLINEAR_BUILD@ @PCAP_BUILD@ @PCRE_BUILD@ @NSOCK_BUILD@ @NBASE_BUILD@ @DNET_BUILD@ @LUA_BUILD@ \
++$(TARGET): build-netutil @OPENCV_BUILD@ @PCAP_BUILD@ @PCRE_BUILD@ @NSOCK_BUILD@ @NBASE_BUILD@ @DNET_BUILD@ @LUA_BUILD@ \
+-build-liblinear: $(LIBLINEARDIR)/Makefile
++build-opencv: $(OPENCVDIR)/Makefile
+-	@echo Compiling liblinear; cd $(LIBLINEARDIR) && $(MAKE) liblinear.a CC="$(CC)" CXX="$(CXX)" CFLAGS="$(CFLAGS) -Wno-uninitialized"
++	@echo Compiling opencv; cd $(OPENCVDIR) && $(MAKE) OPENCV.a CC="$(CC)" CXX="$(CXX)" CFLAGS="$(CFLAGS) -Wno-uninitialized"
+-clean: @LUA_CLEAN@ @LIBLINEAR_CLEAN@ @PCAP_CLEAN@ @PCRE_CLEAN@ @DNET_CLEAN@ \
++clean: @LUA_CLEAN@ @OPENCV_CLEAN@ @PCAP_CLEAN@ @PCRE_CLEAN@ @DNET_CLEAN@ \
+-distclean: @LUA_DIST_CLEAN@ @LIBLINEAR_DIST_CLEAN@ @PCAP_DIST_CLEAN@ \
++distclean: @LUA_DIST_CLEAN@ @OPENCV_DIST_CLEAN@ @PCAP_DIST_CLEAN@ \
+-clean-liblinear:
+-	-cd $(LIBLINEARDIR) && $(MAKE) clean
++clean-opencv:
++	-cd $(OPENCVDIR) && $(MAKE) clean
+-distclean-liblinear: clean-liblinear
++distclean-opencv: clean-opencv
++install-ncat: $(NCATDIR)/ncat
++	@cd $(NCATDIR) && $(MAKE) install
++
++install-nping: $(NPINGDIR)/nping
++	@cd $(NPINGDIR) && $(MAKE) install
++
+

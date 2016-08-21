@@ -1,0 +1,29 @@
+Microsoft problem: [Done]
+
+
+Action taken: None
+2533:group Microsoft Windows XP SP3 or Windows Server 2003 SP1 -- 3 prints: XP SP3, 1 print: MS server 2003 SP1
+
+
+Action taken: Separate these into 4 groups: win7, winvista, win8 and winserver
+(another possibility could be to merge all of them)
+901:group Microsoft Windows Vista SP2 or Windows 7 SP1 or Windows Server 2008 R2 SP1 or Windows 8 Consumer Preview -- 3 prints: 1st, 4prints: 2nd,  3 prints: 3rd, 1 print: 4th
+4058:group Microsoft Windows 7 SP1 or Windows Server 2008 R2 or Windows 8.1 -- 5 prints: 1st, 4 prints: 2nd, 1 print: 3rd
+
+
+Group: Win7 : found at line: 536 as of now
+560:group Microsoft Windows 7 Professional SP1 -- 4 prints
+2629:group Microsoft Windows 7 SP1 -- 2 prints
+1108:group Microsoft Windows 7 SP0 - SP1-- 1 prints: SP0, 3 prints: SP1, 1 print: unspecified
+
+
+Group: WinVista
+5021:group Microsoft Windows Vista SP2 -- 2 print
+
+Group: WinServer
+5062:group Microsoft Windows Server 2008 R2 -- 2 prints
+
+
+Action taken: None
+5350:group Microsoft Windows Server 2012 R2 -- 1 print
+

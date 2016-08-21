@@ -1,0 +1,47 @@
+Linux problem
+
+general doubts:
+Do we keep os with embedded linux differently? Ans: Yes
+
+Action taken: None
+780:group Linux 2.4.21 -- just 1 print
+
+Facts used to segregate the following groups: (groups in this section have been copied to file: Linux to put)
+i) 2.6.38 After this, tcp ss threshold increased (check this)
+Action taken: [UNRESOLVED]
+609:group Linux 2.6.11 - 2.6.15 -- one print in 2.6.8 others aren't specified
+
+242:group Linux 2.6.38 - 2.6.39 -- 3 prints: 2.6.38, 3 prints: 2.6.39
+370:group Linux 2.6.32 - 2.6.39 -- 7 prints: 2.6.39, 1 print: 2.6.32
+
+2440:group Linux 2.6.23 - 2.6.32 -- 3 prints: 2.6.32, 1 print 2.6.23 1 unspecified
+2739:group Linux 2.6.32 - 2.6.37 -- 8 prints: 2.6.32, 7 prints: 2.6.35, 1 print 2.6.36, 1 print 2.6.37
+2187:group Linux 2.6.18 - 2.6.34 -- 7 prints: 2.6.18, 2 prints: 2.6.27, 1 print: 2.6.34, 1 print: 2.6.30, 1print: 2.6.22, 1print: 2.6.26
+4894:group Linux 2.6.18 -- 3 prints
+4756:group Linux 2.6.39 -- 1 print
+
+
+
+8:group Linux 2.6.38 - 3.2 -- 6 prints: 2.6.39, 3 prints: 3.2, 1 print: 2.6.38, 1 print: 3.1
+3111:group Linux 2.6.16 - 3.2 -- 4 prints: 2.6.32, 3 prints: 2.6.38, 3 prints: 2.6.35, 2 prints: 2.6.39, 1 print: 3.6.18, 1 print: 2.6.27, 1 print: 3.2, 1 print: 2.6.30
+3451:group Linux 2.6.32 - 3.2 -- 8 unspecified prints, 6 prints: 3.0.0, 4 prints: 2.6.32, 7 prints: 3.2, 2 prints: 2.6.38, 1print: 2.6.36 (freebox revolution?) (check again)
+4668:group Linux 2.6.39 - 3.5 -- 2 prints: 3.2.0, 2 prints: 2.6.39, 1 print: 3.5
+
+
+4294:group Linux 3.2 - 3.8 -- 3 prints: 3.2, 1 print: 3.4, 1 print: 3.6, 1 print: 3.7, 1 print: 3.8
+4434:group Linux 3.7 - 3.19 -- 2 prints: 3.7, 1 print: 3.8, 1 print: 3.9, 1 print: 3.12, 1 print: 3.16, 1 print: 3.19
+4568:group Linux 3.7 - 3.9 -- 2 prints: 3.7, 1 print: 3.9, 1 print: unspecified
+5437:group Linux 3.12 - 3.18 -- 1 print: 3.12, 1 print: 3.15, 1 print: 3.18
+5668:group Linux 3.13 - 3.19 -- 2 prints: 3.16, 1 print: 3.17, 1 print: 3.15, 1 print: 3.13, 1 print: 3.19
+5824:group Linux 4.0 -- just one print
+
+
+Action Taken: None
+1548:group Thecus N4100PRO NAS device (Linux 2.6.33) -- just 1 print
+
+Action Taken: None
+1502:group Linux 2.6.23 - 2.6.33 (embedded)
+
+Action Taken: None
+4776:group OpenWrt (Linux 3.3 - 3.10) -- 3 prints: 3.10, 1 print: 3.3
+

@@ -1,0 +1,129 @@
+-#include "linear.h"
++#include <ml.h>
++
+-static struct feature_node *vectorize(const FingerPrintResultsIPv6 *FPR) {
++static std::vector<float> vectorize(const FingerPrintResultsIPv6 *FPR, std::vector<float> features_vec) {
+-  struct feature_node *features;
++
++  nr_feature = S1Model->getVarCount();
+-  nr_feature = get_nr_feature(&FPModel);
+-  features = new feature_node[nr_feature + 1];
+-  for (i = 0; i < nr_feature; i++) {
+-    features[i].index = i + 1;
+-    features[i].value = -1;
+-  }
+-  features[i].index = -1;
++
+-    features[idx++].value = vectorize_plen(resps[probe_name].getPacket());
+-    features[idx++].value = vectorize_tc(resps[probe_name].getPacket());
+-    features[idx++].value = vectorize_hlim(resps[probe_name].getPacket(), FPR->distance, FPR->distance_calculation_method);
++    features_vec[idx++] = vectorize_plen(resps[probe_name].getPacket());
++    features_vec[idx++] = vectorize_tc(resps[probe_name].getPacket());
++    features_vec[idx++] = vectorize_hlim(resps[probe_name].getPacket(), FPR->distance, FPR->distance_calculation_method);
+-  features[idx++].value = vectorize_isr(resps);
++  features_vec[idx++] = vectorize_isr(resps);
+-    features[idx++].value = tcp->getWindow();
++    features_vec[idx++] = tcp->getWindow();
+-      features[idx++].value = (flags & mask) != 0;
++      features_vec[idx++] = (flags & mask) != 0;
+-      features[idx++].value = opt.type;
++      features_vec[idx++] = opt.type;
+-      features[idx++].value = opt.len;
++      features_vec[idx++] = opt.len;
+-    features[idx++].value = mss;
+-    features[idx++].value = sackok;
+-    features[idx++].value = wscale;
++    features_vec[idx++] = mss;
++    features_vec[idx++] = sackok;
++    features_vec[idx++] = wscale;
+-      features[idx++].value = (float)tcp->getWindow() / mss;
++      features_vec[idx++] = (float)tcp->getWindow() / mss;
+-      features[idx++].value = -1;
++      features_vec[idx++] = -1;
+-    features[idx++].value = vectorize_icmpv6_type(resps[probe_name].getPacket());
+-    features[idx++].value = vectorize_icmpv6_code(resps[probe_name].getPacket());
++    features_vec[idx++] = vectorize_icmpv6_type(resps[probe_name].getPacket());
++    features_vec[idx++] = vectorize_icmpv6_code(resps[probe_name].getPacket());
+-      log_write(LOG_PLAIN, "%.16g, ", features[i].value);
++      log_write(LOG_PLAIN, "%.16g, ", features_vec[i]);
+-  return features;
++  return features_vec;
+-  struct feature_node *features;
+-  double *values;
+-  struct label_prob *labels;
+-
+-  nr_class = get_nr_class(&FPModel);
+-
+-  features = vectorize(FPR);
+-  values = new double[nr_class];
+-  labels = new struct label_prob[nr_class];
+-
+-  apply_scale(features, get_nr_feature(&FPModel), FPscale);
+-
+-  predict_values(&FPModel, features, values);
+-  for (i = 0; i < nr_class; i++) {
+-    labels[i].label = i;
+-    labels[i].prob = 1.0 / (1.0 + exp(-values[i]));
+-  }
+-  qsort(labels, nr_class, sizeof(labels[0]), label_prob_cmp);
+-  for (i = 0; i < nr_class && i < MAX_FP_RESULTS; i++) {
+-    FPR->matches[i] = &o.os_labels_ipv6[labels[i].label];
+-    FPR->accuracy[i] = labels[i].prob;
+-    FPR->num_matches = i + 1;
+-    if (labels[i].prob >= 0.90 * labels[0].prob)
+-      FPR->num_perfect_matches = i + 1;
+-    if (o.debugging > 2) {
+-      printf("%7.4f %7.4f %3u %s\n", FPR->accuracy[i] * 100,
+-        novelty_of(features, labels[i].label), labels[i].label, FPR->matches[i]->OS_name);
+-    }
+-  }
+-  if (FPR->num_perfect_matches == 0) {
+-    FPR->overall_results = OSSCAN_NOMATCHES;
+-  } else if (FPR->num_perfect_matches == 1) {
+-    double novelty;
+-
+-    novelty = novelty_of(features, labels[0].label);
+-    if (o.debugging > 1)
+-      log_write(LOG_PLAIN, "Novelty of closest match is %.3f.\n", novelty);
+-
+-    if (novelty < FP_NOVELTY_THRESHOLD) {
+-      FPR->overall_results = OSSCAN_SUCCESS;
+-    } else {
+-      if (o.debugging > 0) {
+-        log_write(LOG_PLAIN, "Novelty of closest match is %.3f > %.3f; ignoring.\n",
+-          novelty, FP_NOVELTY_THRESHOLD);
+-      }
+-      FPR->overall_results = OSSCAN_NOMATCHES;
+-      FPR->num_perfect_matches = 0;
+-    }
+-  } else {
+-    FPR->overall_results = OSSCAN_NOMATCHES;
+-    FPR->num_perfect_matches = 0;
+-  }
+-
+-  delete[] features;
+-  delete[] values;
+-  delete[] labels;
++  unsigned int nr_feature = S1Model->getVarCount();
++  std::vector<float> features(nr_feature, 0.0);
++
++  vectorize(FPR, features);
++
++  int s1Response = (int) S1Model->predict(features);
++
++  if (o.debugging > 1)
++    log_write(LOG_PLAIN, "Stage 1 prediction for MSRF is %d\n", s1Response);
++
++  // Loading the required stage 2 model
++  cv::Ptr<cv::ml::RTrees> stage2Model;
++  loadStage2Model(stage2Model, s1Response);
++
++  int s2Response = -1;
++
++  s2Response = (int) stage2Model->predict(features);
++
++  if (o.debugging > 1)
++    log_write(LOG_PLAIN, "Stage 2 prediction for MSRF is %d\n", s2Response);
++
++  std::cout<<"Stage 2 respnse"<<s2Response<<std::endl;
+

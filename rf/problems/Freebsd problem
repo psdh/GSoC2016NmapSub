@@ -1,0 +1,17 @@
+Freebsd problem: [DONE]
+
+Action taken: Merge groups 1, 3, 4 and 5 into 2.
+514:group FreeBSD 8.1-RELEASE -- just 1 print
+2665:group FreeBSD 7.4 - 8.2 -- 3 prints, 1print for 7.4, 2 for 8.2
+4989:group FreeBSD 8.2-RELEASE -- just 2 prints
+1257:group pfSense firewall (FreeBSD 8.1-RELEASE)
+1274:group m0n0wall 1.8 firewall (FreeBSD 8.2)
+
+
+Action taken: Merge group FreeBSD 9.1 into the 1st group.
+5113:group FreeBSD 9.0 - 10.0 -- 6 prints in total, 2 corresponding to FreeBSD 9.1
+5301:group FreeBSD 9.1 --just 1 print
+
+
+Action taken: No change
+1414:group FreeBSD 6.1-RELEASE

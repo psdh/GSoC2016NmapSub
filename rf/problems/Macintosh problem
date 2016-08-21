@@ -1,0 +1,26 @@
+Macintosh problem: [done]
+
+Action taken: None
+754:group Apple Mac OS X 10.4.11 (Tiger) (Darwin 8.11.1) -- 1 print
+
+
+Action taken: merge these groups into one group
+805:group Apple Mac OS X 10.6.8 or iOS 4.3.3 -- 2 prints unspecified
+1294:group Apple iPhone mobile phone (iOS 4.2.1) -- 1 print
+1442:group Apple Mac OS X 10.6.8 (Snow Leopard) (Darwin 10.8.0) -- 3 prints: 10.6, 1 print: 10.8
+1754:group Apple Mac OS X 10.6.8 - 10.7.3 (Snow Leopard - Lion) (Darwin 10.8.0 - 11.3.0) -- 1 print: 10.8, 1 print 11.3, 1 print: 11.2
+1844:group Apple Mac OS X 10.6.8 - 10.7 (Snow Leopard - Lion) or iOS 4.3.3 (Darwin 10.8.0 - 11.3.0) (assuming that ios 4.3.3 had darwin kernel version 10.8), 4 prints: 10.8, 1 print each: 11.0, 11.1., 11.2, 11.3
+
+
+Action taken: merge the below groups into one group
+5483:group Apple Mac OS X 10.9 (Mavericks) - 10.11 (El Capitan) or iOS 6 - 9.1 (Darwin 13.0.0 - 15.3.0) 1 print each: ipod touch, 13.0, 13.4, 14.0, 14.3, 15.0, ios 9.1
+5893:group Apple Mac OS X 10.10 (Yosemite) - 10.11 (El Capitan) (Darwin 14.0.0 - 15.3.0) -- 1 print: OSX 10.10, 1 print: 15.2 darwin kernel, 1 print: 15.3 darwin kernel
+5952:group Apple Mac OS X 10.9 (Mavericks) (Darwin 13.4.0) -- 1 print
+
+
+Action taken:
+4942:group Apple AirPort Extreme WAP -- 1 print
+
+
+Action taken: None
+5843:group Apple Time Capsule NAS device -- no change
